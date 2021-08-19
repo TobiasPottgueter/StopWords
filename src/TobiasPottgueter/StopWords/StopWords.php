@@ -36,6 +36,20 @@ class StopWords {
 	 * @return string
 	 */
 	public function removeStopWordsFromString(string $string): string {
-		return str_replace($this->stopWordList->getStopWords(), '', $string);
+		$words = preg_split('/[^-\w\']+/u', $string, -1, PREG_SPLIT_NO_EMPTY);
+
+		if(1 < count($words)) {
+			$stopWords = $this->stopWordList->getStopWords();
+
+			$words = array_filter($words, function ($w) use (&$stopWords) {
+				return false === array_search($w, $stopWords);
+			});
+		}
+
+		if(!empty($words)) {
+			return implode(' ', $words);
+		}
+
+		return $string;
 	}
 }
