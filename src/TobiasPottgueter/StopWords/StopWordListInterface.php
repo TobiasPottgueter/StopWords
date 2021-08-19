@@ -7,5 +7,5 @@ interface StopWordListInterface {
 	/**
 	 * @return string[]
 	 */
-	public function getStopWords(): array;
+	public function getStopWords();
 }

@@ -26,7 +26,7 @@ class StopWords {
 	 *
 	 * @return bool
 	 */
-	public function isWordAStopWord(string $word): bool {
+	public function isWordAStopWord($word) {
 		return false !== array_search($word, $this->stopWordList->getStopWords());
 	}
 
@@ -35,15 +35,11 @@ class StopWords {
 	 *
 	 * @return string
 	 */
-	public function removeStopWordsFromString(string $string): string {
+	public function removeStopWordsFromString($string) {
 		$words = explode(' ', $string);
 
 		if(1 < count($words)) {
-			$stopWords = $this->stopWordList->getStopWords();
-
-			$words = array_filter($words, function ($w) use (&$stopWords) {
-				return false === array_search($w, $stopWords);
-			});
+			$words = array_filter($words, array($this, 'isWordNotAStopWord'));
 		}
 
 		if(!empty($words)) {
@@ -51,5 +47,14 @@ class StopWords {
 		}
 
 		return $string;
+	}
+
+	/**
+	 * @param $word
+	 *
+	 * @return bool
+	 */
+	public function isWordNotAStopWord($word) {
+		return !$this->isWordAStopWord($word);
 	}
 }
