@@ -1,0 +1,27 @@
+{
+	"name": "tobiaspottgueter/stopwords",
+	"type": "library",
+	"description": "StopWords",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"config": {
+		"preferred-install": "dist",
+		"optimize-autoloader": true,
+		"secure-http": false,
+		"sort-packages": true
+	},
+	"authors": [
+		{
+			"name": "Tobias Pottgüter",
+			"email": "tobias.pottgueter@googlemail.com"
+		}
+	],
+	"require": {
+		"php": ">=7.2"
+	},
+	"autoload": {
+		"psr-0": {
+			"TobiasPottgueter\\StopWords": "src/"
+		}
+	}
+}
