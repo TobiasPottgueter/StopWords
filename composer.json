@@ -1,6 +1,7 @@
 {
 	"name": "tobiaspottgueter/stopwords",
 	"type": "library",
+	"license": "MIT",
 	"description": "StopWords",
 	"minimum-stability": "dev",
 	"prefer-stable": true,
